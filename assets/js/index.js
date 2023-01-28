@@ -54,8 +54,11 @@ let botonBuscar = document.getElementById("btnBuscar")
 let inputCantidadCuartos = document.querySelector("#cantidadCuartos")
 let inputMetrosMininimos = document.querySelector("#metrosMin")
 let inputMetrosMaximos = document.querySelector("#metrosMax")
-let divPropiedades = document.querySelector(".propiedades")
 //seleccionar el div con la clase "propiedades"
+let divPropiedades = document.querySelector(".propiedades")
+//seleccionar el span, para lo del total"
+let span = document.querySelector(".totalDePropiedadesFiltradas")
+
 
 botonBuscar.addEventListener("click", function () {
   let cantidadCuartos = inputCantidadCuartos.value
@@ -75,15 +78,15 @@ botonBuscar.addEventListener("click", function () {
     //e insertar en el div "propiedades"//
     //inner.html +=
 
-
+//aca estamos creando el template de solo las propiedades que han sido filtradas y despues las generamos en el HTML.
     let template = `
   <div class="propiedad">
       <div class="img" style="background-image: url('${propiedadesFiltradas[i].src}')"></div>
       <section>
-          <h5>${propiedadesFiltradas[i].nombre}Mansión</h5>
+          <h5>${propiedadesFiltradas[i].nombre}</h5>
           <div class="d-flex justify-content-between">
-              <p>${propiedadesFiltradas[i].habitaciones}Cuartos: 2</p>
-              <p>${propiedadesFiltradas[i].metros}Metros: 170</p>
+              <p>Habitaciones: ${propiedadesFiltradas[i].habitaciones}</p>
+              <p>Metros: ${propiedadesFiltradas[i].metros}</p>
           </div>
           <p class="my-3">${propiedadesFiltradas[i].descripcion}Mansión gigante</p>
           <button class="btn btn-info ">Ver más</button>
@@ -91,8 +94,6 @@ botonBuscar.addEventListener("click", function () {
   </div>
   `;
   divPropiedades.innerHTML += template;
-
-
   }
 })
 
@@ -109,7 +110,7 @@ const validarInputs = inputs => {
   return true
 
 }
-//aca estamos filtrando las propiedades//
+//aca estamos filtrando las propiedades.
 const filtrarPropiedades = (propiedades, inputs) => {
   let propiedadesFiltradas = [];
   let indexPropiedadFiltrada = 0;
@@ -126,4 +127,5 @@ const filtrarPropiedades = (propiedades, inputs) => {
   }
 
   return propiedadesFiltradas
+
 }
