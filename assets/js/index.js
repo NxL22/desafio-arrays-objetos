@@ -49,11 +49,13 @@ const propiedadesJSON = [
   }
 ];
 
-
+//global 
 let botonBuscar = document.getElementById("btnBuscar")
 let inputCantidadCuartos = document.querySelector("#cantidadCuartos")
 let inputMetrosMininimos = document.querySelector("#metrosMin")
 let inputMetrosMaximos = document.querySelector("#metrosMax")
+let divPropiedades = document.querySelector(".propiedades")
+//seleccionar el div con la clase "propiedades"
 
 botonBuscar.addEventListener("click", function () {
   let cantidadCuartos = inputCantidadCuartos.value
@@ -67,40 +69,31 @@ botonBuscar.addEventListener("click", function () {
   }
 
   let propiedadesFiltradas = filtrarPropiedades (propiedadesJSON, inputs)
-//crear ciclo for de todas las propiedades filtradas//
+  for (let i = 0; i < propiedadesFiltradas.length; i++){
 
-let template = `
-<div class="propiedad">
-    <div class="img" style="background-image: url('${propiedadesJSON[0].src}')"></div>
-    <section>
-        <h5>${propiedadesJSON[0].nombre}Mansión</h5>
-        <div class="d-flex justify-content-between">
-            <p>${propiedadesJSON[0].habitaciones}Cuartos: 2</p>
-            <p>${propiedadesJSON[0].metros}Metros: 170</p>
-        </div>
-        <p class="my-3">Mansión gigante</p>
-        <button class="btn btn-info ">Ver más</button>
-    </section>
-</div>
-`
-`
-<div class="propiedad">
-    <div class="img" style="background-image: url('${propiedadesJSON[1].src}')"></div>
-    <section>
-        <h5>${propiedadesJSON[1].nombre}Mansión</h5>
-        <div class="d-flex justify-content-between">
-            <p>${propiedadesJSON[1].habitaciones}Cuartos: 2</p>
-            <p>${propiedadesJSON[1].metros}Metros: 170</p>
-        </div>
-        <p class="my-3">Mansión gigante</p>
-        <button class="btn btn-info ">Ver más</button>
-    </section>
-</div>
-`
+//crear ciclo for recorriendo propiedades filtradas y  template para cada propiedad filtrada 
+//e insertar en el div "propiedades"//
+//inner.html +=
+    divPropiedades.innerHTML += template;
 
 
-})
+  let template = `
+  <div class="propiedad">
+      <div class="img" style="background-image: url('${propiedadesJSON[0].src}')"></div>
+      <section>
+          <h5>${propiedadesJSON[0].nombre}Mansión</h5>
+          <div class="d-flex justify-content-between">
+              <p>${propiedadesJSON[0].habitaciones}Cuartos: 2</p>
+              <p>${propiedadesJSON[0].metros}Metros: 170</p>
+          </div>
+          <p class="my-3">${propiedadesJSON[0].descripcion}Mansión gigante</p>
+          <button class="btn btn-info ">Ver más</button>
+      </section>
+  </div>
+  `;
 
+
+}})
 
 
 
