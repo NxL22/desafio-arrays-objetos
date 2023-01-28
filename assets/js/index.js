@@ -73,13 +73,13 @@ botonBuscar.addEventListener("click", function () {
   }
 
   let propiedadesFiltradas = filtrarPropiedades(propiedadesJSON, inputs)
-  //aca estoy declarando el TOTAL de las propiedades filtradas.
-  span = propiedadesFiltradas.length; 
+  //aca estoy enviado al HTML el total de las propiedades filtradas.
+  span.innerHTML = propiedadesFiltradas.length;
 
   //crear ciclo for recorriendo propiedades filtradas y  template para cada propiedad filtrada .
   for (let i = 0; i < propiedadesFiltradas.length; i++) {
 
-//aca estamos creando el template de solo las propiedades que han sido filtradas y despues las interpolamos a HTML.
+    //aca estamos creando el template de solo las propiedades que han sido filtradas y despues las interpolamos a HTML.
     let template = `
   <div class="propiedad">
       <div class="img" style="background-image: url('${propiedadesFiltradas[i].src}')"></div>
@@ -94,10 +94,9 @@ botonBuscar.addEventListener("click", function () {
       </section>
   </div>
   `;
-  divPropiedades.innerHTML += template; //aqui las estoy interpolando
+    divPropiedades.innerHTML += template;
   }
 })
-
 
 
 const validarInputs = inputs => {
