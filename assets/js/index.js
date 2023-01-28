@@ -88,7 +88,7 @@ botonBuscar.addEventListener("click", function () {
               <p>Habitaciones: ${propiedadesFiltradas[i].habitaciones}</p>
               <p>Metros: ${propiedadesFiltradas[i].metros}</p>
           </div>
-          <p class="my-3">${propiedadesFiltradas[i].descripcion}Mansión gigante</p>
+          <p class="my-3">${propiedadesFiltradas[i].descripcion}</p>
           <button class="btn btn-info ">Ver más</button>
       </section>
   </div>
@@ -116,7 +116,7 @@ const filtrarPropiedades = (propiedades, inputs) => {
 
   for (let i = 0; i < propiedades.length; i++) {
     if (
-      propiedades[i].cuartos == inputs[0] &&
+      propiedades[i].habitaciones == inputs[0] &&
       propiedades[i].metros >= inputs[1] &&
       propiedades[i].metros <= inputs[2]
     ) {
