@@ -68,32 +68,33 @@ botonBuscar.addEventListener("click", function () {
     return false
   }
 
-  let propiedadesFiltradas = filtrarPropiedades (propiedadesJSON, inputs)
-  for (let i = 0; i < propiedadesFiltradas.length; i++){
+  let propiedadesFiltradas = filtrarPropiedades(propiedadesJSON, inputs)
+  for (let i = 0; i < propiedadesFiltradas.length; i++) {
 
-//crear ciclo for recorriendo propiedades filtradas y  template para cada propiedad filtrada 
-//e insertar en el div "propiedades"//
-//inner.html +=
-    divPropiedades.innerHTML += template;
+    //crear ciclo for recorriendo propiedades filtradas y  template para cada propiedad filtrada 
+    //e insertar en el div "propiedades"//
+    //inner.html +=
 
 
-  let template = `
+    let template = `
   <div class="propiedad">
-      <div class="img" style="background-image: url('${propiedadesJSON[0].src}')"></div>
+      <div class="img" style="background-image: url('${propiedadesFiltradas[i].src}')"></div>
       <section>
-          <h5>${propiedadesJSON[0].nombre}Mansión</h5>
+          <h5>${propiedadesFiltradas[i].nombre}Mansión</h5>
           <div class="d-flex justify-content-between">
-              <p>${propiedadesJSON[0].habitaciones}Cuartos: 2</p>
-              <p>${propiedadesJSON[0].metros}Metros: 170</p>
+              <p>${propiedadesFiltradas[i].habitaciones}Cuartos: 2</p>
+              <p>${propiedadesFiltradas[i].metros}Metros: 170</p>
           </div>
-          <p class="my-3">${propiedadesJSON[0].descripcion}Mansión gigante</p>
+          <p class="my-3">${propiedadesFiltradas[i].descripcion}Mansión gigante</p>
           <button class="btn btn-info ">Ver más</button>
       </section>
   </div>
   `;
+  divPropiedades.innerHTML += template;
 
 
-}})
+  }
+})
 
 
 
@@ -108,17 +109,17 @@ const validarInputs = inputs => {
   return true
 
 }
-
+//aca estamos filtrando las propiedades//
 const filtrarPropiedades = (propiedades, inputs) => {
   let propiedadesFiltradas = [];
   let indexPropiedadFiltrada = 0;
 
-  for(let i = 0; i < propiedades.length;i++){
-    if(
+  for (let i = 0; i < propiedades.length; i++) {
+    if (
       propiedades[i].cuartos == inputs[0] &&
       propiedades[i].metros >= inputs[1] &&
       propiedades[i].metros <= inputs[2]
-    ){
+    ) {
       propiedadesFiltradas[indexPropiedadFiltrada] = propiedades[i]
       indexPropiedadFiltrada++
     }
