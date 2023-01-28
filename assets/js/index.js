@@ -66,19 +66,20 @@ botonBuscar.addEventListener("click", function () {
   let metrosMaximos = inputMetrosMaximos.value
   const inputs = [cantidadCuartos, metrosMininimos, metrosMaximos]
 
+
   if (!validarInputs(inputs)) {
     alert("Faltan campos por llenar")
     return false
   }
 
   let propiedadesFiltradas = filtrarPropiedades(propiedadesJSON, inputs)
+  //aca estoy declarando el TOTAL de las propiedades filtradas.
+  span = propiedadesFiltradas.length; 
+
+  //crear ciclo for recorriendo propiedades filtradas y  template para cada propiedad filtrada .
   for (let i = 0; i < propiedadesFiltradas.length; i++) {
 
-    //crear ciclo for recorriendo propiedades filtradas y  template para cada propiedad filtrada 
-    //e insertar en el div "propiedades"//
-    //inner.html +=
-
-//aca estamos creando el template de solo las propiedades que han sido filtradas y despues las generamos en el HTML.
+//aca estamos creando el template de solo las propiedades que han sido filtradas y despues las interpolamos a HTML.
     let template = `
   <div class="propiedad">
       <div class="img" style="background-image: url('${propiedadesFiltradas[i].src}')"></div>
@@ -93,7 +94,7 @@ botonBuscar.addEventListener("click", function () {
       </section>
   </div>
   `;
-  divPropiedades.innerHTML += template;
+  divPropiedades.innerHTML += template; //aqui las estoy interpolando
   }
 })
 
@@ -129,3 +130,4 @@ const filtrarPropiedades = (propiedades, inputs) => {
   return propiedadesFiltradas
 
 }
+
