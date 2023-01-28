@@ -49,7 +49,7 @@ const propiedadesJSON = [
   }
 ];
 
-//global 
+//variables globales 
 let botonBuscar = document.getElementById("btnBuscar")
 let inputCantidadCuartos = document.querySelector("#cantidadCuartos")
 let inputMetrosMininimos = document.querySelector("#metrosMin")
@@ -66,20 +66,19 @@ botonBuscar.addEventListener("click", function () {
   let metrosMaximos = inputMetrosMaximos.value
   const inputs = [cantidadCuartos, metrosMininimos, metrosMaximos]
 
-
   if (!validarInputs(inputs)) {
     alert("Faltan campos por llenar")
     return false
   }
 
   let propiedadesFiltradas = filtrarPropiedades(propiedadesJSON, inputs)
-  //aca estoy enviado al HTML el total de las propiedades filtradas.
   span.innerHTML = propiedadesFiltradas.length;
+  //aca estoy enviado al HTML el total de las propiedades filtradas.
 
-  //crear ciclo for recorriendo propiedades filtradas y  template para cada propiedad filtrada .
+  //crear ciclo FOR recorriendo propiedades filtradas.
   for (let i = 0; i < propiedadesFiltradas.length; i++) {
 
-    //aca estamos creando el template de solo las propiedades que han sido filtradas y despues las interpolamos a HTML.
+    //aca estamos creando el template de solo las propiedades que han sido filtradas mientras las interpolamos a HTML.
     let template = `
   <div class="propiedad">
       <div class="img" style="background-image: url('${propiedadesFiltradas[i].src}')"></div>
